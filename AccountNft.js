@@ -2,7 +2,7 @@ const { Wallet, Client, AccountNFTsRequest, parseNFTokenID } = require("xrpl");
 
 async function accountNft() {
   try {
-    
+
     let wallet = Wallet.fromSeed("sEd7NBfMZn6P5MDzdQHQeuwRSnDx55R");
     let client = new Client("wss://s.altnet.rippletest.net/");
 
@@ -16,6 +16,11 @@ async function accountNft() {
     let accountNftResponse = await client.request(accountNftRequest);
     console.log(accountNftResponse);
     console.log(accountNftResponse.result.account_nfts);
+
+    accountNftResponse.result.account_nfts.forEach(nft => {
+        let parsedNftokenID=parseNFTokenID(nft.NFTokenID);
+        console.log(parsedNftokenID);
+    });
 
     let parsedNftokenID=parseNFTokenID(accountNftResponse.result.account_nfts[0].NFTokenID);
     console.log(parsedNftokenID);

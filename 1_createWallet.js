@@ -4,9 +4,17 @@ const ECDSA = require("xrpl/dist/npm/ECDSA");
 async function createWallet() {
     let newWallet = Wallet.generate(ECDSA.ed25519);
     console.log(newWallet);
+ //   document.getElementById("newData").innerHTML = newWallet
 }
 
+// function createWallet():string {
+//     let newWallet=Wallet.generate(ECDSA.ed25519);
+//     console.log(newWallet);
+//     return newWallet.seed+"";
+// }
+
 async function fundWallet() {
+//    let wallet=Wallet.fromSeed(seed);
 //  let wallet = Wallet.fromSeed("sEd716b5piTG9dvBmUMAyVCQiUXUcAK");
     let wallet = Wallet.fromSeed("sEd7NBfMZn6P5MDzdQHQeuwRSnDx55R");
     let client = new Client("wss://s.altnet.rippletest.net/");
@@ -18,5 +26,6 @@ async function fundWallet() {
     console.log(result);
 }
 
-//createWallet();
-fundWallet();
+createWallet();
+//fundWallet(createWallets());
+//fundWallet();
